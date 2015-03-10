@@ -1,0 +1,19 @@
+{
+  "name": "jquery.egen",
+  "version": "0.1.0",
+  "main": "src/jquery.egen.coffee",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "*.json",
+    "*.md",
+    "Gruntfile.coffee"
+  ],
+  "dependencies": {
+    "jquery": ">=1.9"
+  }
+}
