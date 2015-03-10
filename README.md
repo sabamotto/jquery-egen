@@ -2,6 +2,8 @@
 
 A simple jQuery plugin for generating element by a query string.
 
+__For downloads__: https://github.com/sabamotto/jquery-egen/releases/
+
 ## Installation
 
 Include eGen script after the jQuery library.
