@@ -1,4 +1,5 @@
-* Changelog
+Changelog
+----
 
 ver.0.1.1
 ----
