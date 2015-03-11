@@ -23,14 +23,14 @@ build ($) ->
       tokenStr = queryTokens.shift()
       token = tokenStr.match(/([^\w\-])([\w\-]+)/)
       unless token and token.length == 3
-        throw new $.egen.TokenError("The query token provided ('#{tokenStr}') is not a valid token.")
+        throw "The query token provided ('#{tokenStr}') is not a valid token."
       switch token[1]
         when '#'
           element.id = token[2]
         when '.'
           element.classList.add token[2]
         else
-          throw new $.egen.TokenError("The query token provided ('#{tokenStr}') is not a valid token type.")
+          throw "The query token provided ('#{tokenStr}') is not a valid token type."
 
     # set attributes
     if attrs
@@ -50,8 +50,3 @@ build ($) ->
       @append $.egen(queryTokens, attrs).append(innerNodes)
     else
       @append $.egen(queryTokens, attrs)
-
-  class $.egen.TokenError
-    constructor: (message) ->
-      @message = message
-      @name = 'TokenError'

@@ -64,9 +64,21 @@ module.exports = (grunt) ->
           'dist/jquery.egen.min.js': 'dist/jquery.egen.js'
         ]
 
+    closurecompiler:
+      minify:
+        files:
+          'dist/jquery.egen.min.js': 'dist/jquery.egen.js'
+        options:
+          banner: '/*!<%=pkg.name%> ver.<%=pkg.version%> | <%=pkg.license%>*/'
+          compilation_level: 'ADVANCED_OPTIMIZATIONS'
+          externs: ['externs/jquery.js', 'externs/others.js']
+
   # loading dependencies for tasks
   for dep, _ of pkgData.devDependencies
     grunt.loadNpmTasks dep if dep isnt 'grunt' and /^grunt/.test dep
 
-  grunt.registerTask 'default', ['clean', 'coffee', 'concat', 'qunit', 'uglify']
-  grunt.registerTask 'test', ['clean', 'coffee', 'concat', 'connect:tests']
+  grunt.registerTask 'build', ['clean', 'coffee', 'concat', 'closurecompiler']
+  grunt.registerTask 'build_uglify', ['clean', 'coffee', 'concat', 'closurecompiler']
+
+  grunt.registerTask 'default', ['build', 'qunit']
+  grunt.registerTask 'test', ['build', 'connect:tests']

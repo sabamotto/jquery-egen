@@ -36,7 +36,7 @@ build(function($) {
       tokenStr = queryTokens.shift();
       token = tokenStr.match(/([^\w\-])([\w\-]+)/);
       if (!(token && token.length === 3)) {
-        throw new $.egen.TokenError("The query token provided ('" + tokenStr + "') is not a valid token.");
+        throw "The query token provided ('" + tokenStr + "') is not a valid token.";
       }
       switch (token[1]) {
         case '#':
@@ -46,7 +46,7 @@ build(function($) {
           element.classList.add(token[2]);
           break;
         default:
-          throw new $.egen.TokenError("The query token provided ('" + tokenStr + "') is not a valid token type.");
+          throw "The query token provided ('" + tokenStr + "') is not a valid token type.";
       }
     }
     if (attrs) {
@@ -65,22 +65,13 @@ build(function($) {
       return $(element);
     }
   };
-  $.fn.egen = $.fn.eGen = function(queryTokens, attrs, innerNodes) {
+  return $.fn.egen = $.fn.eGen = function(queryTokens, attrs, innerNodes) {
     if (innerNodes) {
       return this.append($.egen(queryTokens, attrs).append(innerNodes));
     } else {
       return this.append($.egen(queryTokens, attrs));
     }
   };
-  return $.egen.TokenError = (function() {
-    function TokenError(message) {
-      this.message = message;
-      this.name = 'TokenError';
-    }
-
-    return TokenError;
-
-  })();
 });
 
 //

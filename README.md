@@ -45,7 +45,7 @@ div = $.egen()
 
 ## Build
 
-To build eGen by yourself, first of make sure you have Node.js and Grunt installed.
+To build eGen by yourself, first of make sure you have Node.js, Grunt and JRE installed.
 
 1. Clone eGen repository
 
