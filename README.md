@@ -1,13 +1,13 @@
 # jQuery-eGen
 
 A simple jQuery plugin for generating element by a query string.
+eGen is inspired by [Slim](https://github.com/slim-template/slim).
 
 __For downloads__: https://github.com/sabamotto/jquery-egen/releases/
 
 ## Installation
 
 Include eGen script after the jQuery library.
-
 ```html
 <script src="your/js/path/jquery.min.js"></script>
 <script src="your/js/path/jquery.egen.min.js"></script>
@@ -17,30 +17,19 @@ Or, include it in your script package.
 
 ## Usage
 
-Create paragraph element with alignment, and append to body:
-
+Create simple div element:
 ```javascript
-$('body').append(
-  $.egen('p', { align: 'center' }).text('welcome to eGen!')
-);
-```
-
-Or, another way:
-
-```javascript
-$('body').egen('p', { align: 'center' }, 'welcome to eGen!');
+div = $.egen()
 ```
 
 Create element with id or classes:
-
 ```javascript
 icon = $.egen('i.fa.fa-spinner.fa-spin#spinIcon');
 ```
 
-Create simple div element:
-
+Create paragraph element with alignment, and append to body:
 ```javascript
-div = $.egen()
+$('body').egen('p', { align: 'center' }, 'welcome to eGen!');
 ```
 
 ## Build
@@ -48,20 +37,17 @@ div = $.egen()
 To build eGen by yourself, first of make sure you have Node.js, Grunt and JRE installed.
 
 1. Clone eGen repository
-
 ```
 git clone https://github.com/sabamotto/jquery-egen.git
 cd jquery-egen
 ```
 
 2. Install Node.js dependencies
-
 ```
 npm install
 ```
 
 3. Run `grunt` to generate a script in folder `dist`.
-
 ```
 grunt
 ```
@@ -88,6 +74,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-## Contact
+## Author
 
 [@sabamotto](https://twitter.com/sabamotto)
