@@ -71,7 +71,7 @@ module.exports = (grunt) ->
         options:
           banner: '/*!<%=pkg.name%> ver.<%=pkg.version%> | <%=pkg.license%>*/'
           compilation_level: 'ADVANCED_OPTIMIZATIONS'
-          externs: ['externs/jquery.js', 'externs/others.js']
+          externs: ['externs/jquery.js', 'externs/others.js', 'externs/egen.js']
 
   # loading dependencies for tasks
   for dep, _ of pkgData.devDependencies
