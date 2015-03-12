@@ -47,7 +47,4 @@ build ($) ->
     $element
 
   $.fn.egen = $.fn.eGen = (queryTokens, attrs, innerContents) ->
-    if innerContents
-      @append $.egen(queryTokens, attrs, innerContents)
-    else
-      @append $.egen(queryTokens, attrs)
+    @append $.egen(queryTokens, attrs, innerContents)
