@@ -28,7 +28,7 @@ test 'create chaining tags', ->
 
 test 'create nest tags', ->
   expect 2
-  $elem = $.egen('#root span.lv1  .lv2  i.lv3', null, 'nested text', true)
+  $elem = $.egen('#root span.lv1  .lv2  i.lv3', null, 'nested text')
   ok $($elem.children('.lv1')).hasClass('lv1'), 'should contain a nested element'
   strictEqual $elem.find('.lv1 > .lv2 > i.lv3').text(), 'nested text', 'should contain a text in deepest element'
 
