@@ -1,5 +1,8 @@
 # generated javascripts
 build
+dist/**/*.js
+test/**/*.js
+*.map
 
 # dependencies
 bower_components
