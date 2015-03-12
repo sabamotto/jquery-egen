@@ -27,8 +27,10 @@ test 'create chaining tags', ->
   strictEqual $elem.text(), 'heading', 'should contain a text'
 
 test 'create an element with XSS text', ->
-  expect 1
+  expect 2
   $elem = $.egen('code#XSS', null, '<script>alert("XSS!");</script>')
+  strictEqual $elem.find('script').size(), 0, 'should not contain script element'
+  $elem = $elem.egen('code#XSS', null, '<script>alert("XSS!");</script>')
   strictEqual $elem.find('script').size(), 0, 'should not contain script element'
 
 test 'throws for illegal query', ->

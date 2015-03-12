@@ -48,6 +48,6 @@ build ($) ->
 
   $.fn.egen = $.fn.eGen = (queryTokens, attrs, innerContents) ->
     if innerContents
-      @append $.egen(queryTokens, attrs).append(innerContents)
+      @append $.egen(queryTokens, attrs, innerContents)
     else
       @append $.egen(queryTokens, attrs)
