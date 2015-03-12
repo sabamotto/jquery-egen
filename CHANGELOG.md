@@ -1,6 +1,12 @@
 Changelog
 ----
 
+ver.0.1.2
+- Supported text node for inner contents.
+  if you need text contents, you should use 3rd parameter.
+
+- Added example.
+
 ver.0.1.1
 ----
 - Changed minify engine into ClosureCompiler.
