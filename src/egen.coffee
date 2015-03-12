@@ -34,12 +34,7 @@ build ($) ->
           throw "The query token provided ('#{tokenStr}') is not a valid token type."
 
     # set attributes
-    if attrs
-      for name, value of attrs
-        if value or value == 0
-          element.setAttribute name, value
-        else
-          element.removeAttribute name
+    $element.attr attrs if attrs
 
     # set inner contents
     if innerContents
