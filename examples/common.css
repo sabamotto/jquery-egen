@@ -44,6 +44,8 @@ html,body {
   border-radius: 5px;
   color: #eeeeee;
 
+  vertical-align: middle;
+
   box-sizing: border-box;
   display: inline-block;
   margin: 2px;
@@ -55,10 +57,12 @@ html,body {
 code {
   background: #dddddd;
 
+  counter-reset: code-lines;
+
   display: block;
   position: relative;
   margin: .8em 0;
-  padding: .4em .8em .8em;
+  padding: 4px 8px 8px;
 
   font-family: Monaco, Courier, monospace;
   font-size: 10pt;
@@ -71,12 +75,32 @@ code:before {
   font-size: 80%;
 
   display: block;
-  margin: 0 -0.2em .8em;
-  padding: .1em .4em;
+  margin: 0 0 .8em;
+  padding: 1px 4px;
 }
-code.html:before {
-  content: 'html';
+code.html:before { content: 'html'; }
+code.js:before { content: 'javascript';
 }
-code.js:before {
-  content: 'javascript';
+code .line {
+  counter-increment: code-lines;
+
+  display: block;
+  position: relative;
+}
+code .line:hover {
+  background: #e8e8e8;
+}
+code .line:before {
+  user-select: none;
+  -webkit-user-select: none;
+
+  border-right: 1px solid #888888;
+  color: #555555;
+  content: counter(code-lines);
+  font-size: 90%;
+  text-align: right;
+
+  display: inline-block;
+  padding: 2px;
+  min-width: 40px;
 }

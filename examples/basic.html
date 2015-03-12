@@ -15,62 +15,47 @@
         <h1>Create elements dynamically</h1>
 
         <div id="example1_html" class="sandbox">
-          <button id="action1">Click here!</button>
+          <button id="action1">(1) div tag</button>
+          <button id="action2">(2) with attrs</button>
+          <button id="action3">(3) nested</button>
           <div id="container1" class="boxes"></div>
+          <code id="html1"></code>
         </div>
         <script id="example1_js">
+          var container = $("#container1");
+
+          //-- (1) simple div tag --
           $("#action1").on("click", function(e) {
-            $("#container1").egen(".box", null, "This is a 'box'.");
+
+            container.egen(".box");
+
+            $("#html1").text(container.html());
+          });
+
+          //-- (2) with attributes --
+          var count = 0;
+          $("#action2").on("click", function(e) {
+
+            container.egen("a.box#id" + count, {
+              href: "#example1",
+              title: "this is 'id" + count + "'."
+            }, "a tag");
+            count += 1;
+
+            $("#html1").text(container.html());
+          });
+
+          //-- (3) nested tag --
+          $("#action3").on("click", function(e) {
+
+            container.egen(".box b i", null, "nested!");
+
+            $("#html1").text(container.html());
           });
         </script>
 
         <code copy-from="example1_html" class="html"></code>
         <code copy-from="example1_js" class="js"></code>
-
-      </article>
-
-      <a name="example2"></a>
-      <article class="example">
-
-        <h1>with Attributes</h1>
-
-        <div id="example2_html" class="sandbox">
-          <button id="action2">Click here!</button>
-          <div id="container2" class="boxes"></div>
-        </div>
-        <script id="example2_js">
-          var count = 0;
-          $("#action2").on("click", function(e) {
-            $("#container2").egen("a.box#id" + count, {
-              href: "#example2",
-              title: "this is 'id" + count + "'.",
-            }, "a tag");
-            count += 1;
-          });
-        </script>
-
-        <code copy-from="example2_html" class="html"></code>
-        <code copy-from="example2_js" class="js"></code>
-
-      </article>
-
-      <a name="example3"></a>
-      <article class="example">
-
-        <h1>nested elements</h1>
-
-        <div id="example3_html" class="sandbox">
-          <button id="action3">Click here!</button>
-          <div id="container3" class="boxes"></div>
-        </div>
-        <script id="example3_js">
-          $("#action3").on("click", function(e) {
-            $("#container3").egen(".box b.nest", null, "bold text");
-          });
-        </script>
-
-        <code copy-from="example3_html" class="html"></code>
-        <code copy-from="example3_js" class="js"></code>
 
       </article>
     </div>
@@ -86,17 +71,25 @@
           var indentSize = null;
           var content = $code.hasClass('html') ? $target.html() : $target.text();
           $.each(content.split("\n"), function(j, line) {
-            if (! /\S/.test(line)) return; // continue
-
+            var isBlank = ! /\S/.test(line);
             if (indentSize == null) {
+              if (isBlank) return; // continue
               indentSize = (line.match(/^\s+/) || [''])[0].length;
             }
 
-            var indent = line.substr(indentSize) // remove useless indent
-              .replace(/\S.*$/, '') // extract indent
-              .replace(/\s/g, '&nbsp;'); // escape spaces
-            $code.append(indent).egen('span', null, line).egen('br');
+            // extract indent
+            var indent = line.substr(indentSize)
+              .replace(/\S.*$/, '')
+              .replace(/\s/g, '&nbsp;');
+            $code.append(
+              $.egen('.line').append(indent).egen('span', null, line).egen('br')
+            );
           });
+
+          var $lastLine = $code.children('.line:last-child');
+          if ($lastLine.text().trim() == '') {
+            $lastLine.remove();
+          }
         });
       });
     </script>
