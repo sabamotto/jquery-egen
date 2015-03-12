@@ -46,7 +46,7 @@ module.exports = (grunt) ->
 
     concat:
       options:
-        banner: '(function() {'
+        banner: "/*!<%=pkg.name%> ver.<%=pkg.version%> | <%=pkg.license%>*/ (function() {"
         footer: '}).call(this);'
         sourceMap: true
       dist:

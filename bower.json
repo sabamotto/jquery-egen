@@ -1,6 +1,6 @@
 {
   "name": "jquery.egen",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "main": "src/jquery.egen.coffee",
   "license": "MIT",
   "ignore": [
