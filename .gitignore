@@ -1,5 +1,10 @@
+# generated javascripts
 build
+
+# dependencies
 bower_components
 node_modules
+
+# others
 *.log
 *.log-*
