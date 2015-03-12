@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery-eGen Examples</title>
+    <link rel="stylesheet" href="./common.css">
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="../dist/jquery.egen.js"></script>
+  </head>
+  <body>
+    <div class="contents">
+
+      <a name="example1"></a>
+      <article class="example">
+
+        <h1>Create elements dynamically</h1>
+
+        <div id="example1_html" class="sandbox">
+          <button id="action1">Click here!</button>
+          <div id="container1" class="boxes"></div>
+        </div>
+        <script id="example1_js">
+          $("#action1").on("click", function(e) {
+            $("#container1").egen(".box", null, "This is a 'box'.");
+          });
+        </script>
+
+        <code copy-from="example1_html" class="html"></code>
+        <code copy-from="example1_js" class="js"></code>
+
+      </article>
+
+      <a name="example2"></a>
+      <article class="example">
+
+        <h1>with Attributes</h1>
+
+        <div id="example2_html" class="sandbox">
+          <button id="action2">Click here!</button>
+          <div id="container2" class="boxes"></div>
+        </div>
+        <script id="example2_js">
+          var count = 0;
+          $("#action2").on("click", function(e) {
+            $("#container2").egen("a.box#id" + count, {
+              href: "#example2",
+              title: "this is 'id" + count + "'.",
+            }, "a tag");
+            count += 1;
+          });
+        </script>
+
+        <code copy-from="example2_html" class="html"></code>
+        <code copy-from="example2_js" class="js"></code>
+
+      </article>
+    </div>
+
+    <script>
+      $(function() {
+        // copy code
+        $("[copy-from]").each(function(i, code) {
+          var $code = $(code);
+          var $target = $("#" + $code.attr("copy-from").trim());
+          if ($target.length == 0) { return; }
+
+          var indentSize = null;
+          var content = $code.hasClass('html') ? $target.html() : $target.text();
+          $.each(content.split("\n"), function(j, line) {
+            if (! /\S/.test(line)) return; // continue
+
+            if (indentSize == null) {
+              indentSize = (line.match(/^\s+/) || [''])[0].length;
+            }
+
+            var indent = line.substr(indentSize) // remove useless indent
+              .replace(/\S.*$/, '')
+              .replace(/\s/g, '&nbsp;');
+            $code.egen('span', null, indent)
+              .append($.egen('span').text(line))
+              .egen('br');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
