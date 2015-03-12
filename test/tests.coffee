@@ -26,9 +26,14 @@ test 'create chaining tags', ->
   strictEqual $elem.contents().size(), 1, 'should contain a H2 element'
   strictEqual $elem.text(), 'heading', 'should contain a text'
 
+test 'create an element with XSS text', ->
+  expect 1
+  $elem = $.egen('code#XSS', null, '<script>alert("XSS!");</script>')
+  strictEqual $elem.find('script').size(), 0, 'should not contain script element'
+
 test 'throws for illegal query', ->
   throws ->
-    $.egen('##illegalId')
+    $.egen('##illegalQuery##')
   , /is not a valid token./, 'raised error message contains "is not a valid token"'
   throws ->
     $.egen('#unsupported:token')
