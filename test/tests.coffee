@@ -26,6 +26,12 @@ test 'create chaining tags', ->
   strictEqual $elem.contents().size(), 1, 'should contain a H2 element'
   strictEqual $elem.text(), 'heading', 'should contain a text'
 
+test 'create nest tags', ->
+  expect 2
+  $elem = $.egen('#root span.lv1  .lv2  i.lv3', null, 'nested text', true)
+  ok $($elem.children('.lv1')).hasClass('lv1'), 'should contain a nested element'
+  strictEqual $elem.find('.lv1 > .lv2 > i.lv3').text(), 'nested text', 'should contain a text in deepest element'
+
 test 'create an element with XSS text', ->
   expect 2
   $elem = $.egen('code#XSS', null, '<script>alert("XSS!");</script>')
@@ -40,6 +46,3 @@ test 'throws for illegal query', ->
   throws ->
     $.egen('#unsupported:token')
   , /is not a valid token type./, 'raised error message contains "is not a valid token type"'
-  throws ->
-    $.egen('#chain .tokens')
-  , /is not a valid token./, 'raised error message contains "is not a valid token"'
