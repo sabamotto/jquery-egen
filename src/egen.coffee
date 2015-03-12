@@ -2,7 +2,7 @@ build ($) ->
 
   document = window.document
 
-  $.egen = $.eGen = (queryTokens, attrs, innerNodes) ->
+  $.egen = $.eGen = (queryTokens, attrs, innerContents) ->
     tagName = id = null
 
     # generate element
@@ -17,6 +17,7 @@ build ($) ->
       else
         tagName = 'div'
     element = document.createElement tagName
+    $element = $(element)
 
     # setup id, class
     while queryTokens.length
@@ -40,13 +41,18 @@ build ($) ->
         else
           element.removeAttribute name
 
-    if innerNodes
-      $(element).append(innerNodes)
-    else
-      $(element)
+    # set inner contents
+    if innerContents
+      if typeof innerContents is 'string'
+        # disable html code
+        $element.text(innerContents)
+      else
+        $element.append(innerContents)
 
-  $.fn.egen = $.fn.eGen = (queryTokens, attrs, innerNodes) ->
-    if innerNodes
-      @append $.egen(queryTokens, attrs).append(innerNodes)
+    $element
+
+  $.fn.egen = $.fn.eGen = (queryTokens, attrs, innerContents) ->
+    if innerContents
+      @append $.egen(queryTokens, attrs).append(innerContents)
     else
       @append $.egen(queryTokens, attrs)
