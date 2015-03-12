@@ -73,11 +73,9 @@
             }
 
             var indent = line.substr(indentSize) // remove useless indent
-              .replace(/\S.*$/, '')
-              .replace(/\s/g, '&nbsp;');
-            $code.egen('span', null, indent)
-              .append($.egen('span').text(line))
-              .egen('br');
+              .replace(/\S.*$/, '') // extract indent
+              .replace(/\s/g, '&nbsp;'); // escape spaces
+            $code.append(indent).egen('span', null, line).egen('br');
           });
         });
       });
