@@ -1,0 +1,97 @@
+.sandbox {
+  border: 1px solid #ccc;
+
+  margin: 0.5em 0;
+  padding: 1em;
+}
+.sandbox button {
+  font-size: 11pt;
+
+  margin: 4px;
+}
+.sandbox .boxes {
+  background: #333333;
+  border: 2px inset #d0d0d0;
+  border-radius: 5px;
+
+  box-sizing: border-box;
+  display: block;
+  padding: 4px;
+  width: 100%;
+  min-height: 100px;
+}
+.sandbox .box {
+  background: #5c5c5c;
+  border: 1px outset #f0f0f0;
+  border-radius: 5px;
+  color: #eeeeee;
+
+  vertical-align: middle;
+
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 2px;
+  padding: 2px;
+  width: 80px;
+  height: 80px;
+}
+.sandbox b { font-weight: bold; }
+.sandbox i { font-style: italic; }
+
+code {
+  counter-reset: code-lines;
+
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  margin: .8em 0;
+  padding: 4px 8px 8px;
+
+  font-family: Monaco, Courier, monospace;
+  font-size: 10pt;
+}
+code:before {
+  border-bottom: 1px dotted #888888;
+  color: #555555;
+
+  content: 'code';
+  font-size: 80%;
+
+  display: block;
+  margin: 0 0 .8em;
+  padding: 1px 4px;
+}
+code.html:before { content: 'html'; }
+code.js:before { content: 'javascript';
+}
+code .line {
+  counter-increment: code-lines;
+
+  display: block;
+  position: relative;
+  padding-left: 44px;
+}
+code .line:hover {
+  background: #e8e8e8;
+}
+code .line.comment {
+  color: #886e55;
+}
+code .line:before {
+  user-select: none;
+  -webkit-user-select: none;
+
+  border-right: 1px solid #888888;
+  color: #555555;
+  content: counter(code-lines);
+  font-size: 90%;
+  text-align: right;
+
+  box-sizing: border-box;
+  display: inline-block;
+  position: absolute;
+  padding: 2px;
+  width: 40px;
+  height: 100%;
+  left: 0;
+}
