@@ -24,32 +24,28 @@
         <script id="example1_js">
           var container = $("#container1");
 
-          //-- (1) simple div tag --
+          //-- (1) simple div tag
           $("#action1").on("click", function(e) {
-
             container.egen(".box");
-
-            $("#html1").text(container.html());
           });
 
-          //-- (2) with attributes --
+          //-- (2) with attributes
           var count = 0;
           $("#action2").on("click", function(e) {
-
             container.egen("a.box#id" + count, {
               href: "#example1",
               title: "this is 'id" + count + "'."
             }, "a tag");
             count += 1;
-
-            $("#html1").text(container.html());
           });
 
-          //-- (3) nested tag --
+          //-- (3) nested tag
           $("#action3").on("click", function(e) {
-
             container.egen(".box b i", null, "nested!");
+          });
 
+          //-- update html preview
+          $("#action1,#action2,#action3").on("click", function(e) {
             $("#html1").text(container.html());
           });
         </script>
@@ -69,6 +65,7 @@
           if ($target.length == 0) { return; }
 
           var indentSize = null;
+          var isJS = $code.hasClass('js');
           var content = $code.hasClass('html') ? $target.html() : $target.text();
           $.each(content.split("\n"), function(j, line) {
             var isBlank = ! /\S/.test(line);
@@ -81,9 +78,19 @@
             var indent = line.substr(indentSize)
               .replace(/\S.*$/, '')
               .replace(/\s/g, '&nbsp;');
-            $code.append(
-              $.egen('.line').append(indent).egen('span', null, line).egen('br')
-            );
+
+            // generate
+            line = line.trim();
+            var $line = $.egen('.line')
+              .append(indent)
+              .egen('span', null, line)
+              .egen('br')
+            $code.append($line);
+
+            // javascript comments
+            if (isJS && /^\/\//.test(line)) {
+              $line.addClass('comment');
+            }
           });
 
           var $lastLine = $code.children('.line:last-child');

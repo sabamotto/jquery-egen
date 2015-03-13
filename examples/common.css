@@ -86,9 +86,13 @@ code .line {
 
   display: block;
   position: relative;
+  padding-left: 44px;
 }
 code .line:hover {
   background: #e8e8e8;
+}
+code .line.comment {
+  color: #886e55;
 }
 code .line:before {
   user-select: none;
@@ -100,7 +104,11 @@ code .line:before {
   font-size: 90%;
   text-align: right;
 
+  box-sizing: border-box;
   display: inline-block;
+  position: absolute;
   padding: 2px;
-  min-width: 40px;
+  width: 40px;
+  height: 100%;
+  left: 0;
 }
