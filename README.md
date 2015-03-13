@@ -25,13 +25,20 @@ div = $.egen()
 
 Create element with id or classes:
 ```javascript
-icon = $.egen('i.fa.fa-spinner.fa-spin#spinIcon');
+icon = $.egen('i.fa.fa-spinner.fa-spin#waitIcon');
 ```
 
 Create paragraph element with alignment, and append to body:
 ```javascript
 $('body').egen('p', { align: 'center' }, 'welcome to eGen!');
 ```
+
+Create nested element:
+```javascript
+warnText = $.egen('p.warn b i', { align: 'center' }, 'Bold and Italic');
+```
+
+see also [examples](https://github.com/sabamotto/jquery-egen/tree/master/examples).
 
 ## Build
 
