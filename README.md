@@ -5,7 +5,7 @@ A simple jQuery plugin for generating element by a query string.
 jQuery-eGen is inspired by [Slim](https://github.com/slim-template/slim).
 
 - Website: http://sabamotto.github.io/jquery-egen/
-- For downloads: https://github.com/sabamotto/jquery-egen/releases/
+- Downloads: https://github.com/sabamotto/jquery-egen/releases/
 - Examples: http://sabamotto.github.io/jquery-egen/examples.html
 
 ## Installation
