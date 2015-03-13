@@ -1,6 +1,6 @@
 {
   "name": "jquery-egen",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A simple jQuery plugin for generating element by a query string.",
   "main": "src/jquery.egen.coffee",
   "scripts": {

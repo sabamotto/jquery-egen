@@ -1,7 +1,14 @@
 Changelog
 ----
 
+ver.0.1.3
+----
+- Supported nested elements using one query separated with space.
+
+- Updated example.
+
 ver.0.1.2
+----
 - Supported text node for inner contents.
   if you need text contents, you should use 3rd parameter.
 
