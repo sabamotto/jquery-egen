@@ -22,22 +22,37 @@ Or, include it in your script package.
 
 Create simple div element:
 ```javascript
-div = $.egen()
+div = $.egen();
+```
+```html
+<div></div>
 ```
 
 Create element with id or classes:
 ```javascript
 icon = $.egen('i.fa.fa-spinner.fa-spin#waitIcon');
 ```
+```html
+<i class="fa fa-spinner fa-spin" id="waitIcon"></i>
+```
 
 Create paragraph element with alignment, and append to body:
 ```javascript
 $('body').egen('p', { align: 'center' }, 'welcome to eGen!');
 ```
+```html
+<body>
+  <!-- nodes.. -->
+  <p align="center">welcome&nbsp;to&nbsp;eGen!</p>
+</body>
+```
 
 Create nested element:
 ```javascript
 warnText = $.egen('p.warn b i', { align: 'center' }, 'Bold and Italic');
+```
+```html
+<p class="warn" align="center"><b><i>Bold&nbsp;and&nbsp;Italic</i></b></p>
 ```
 
 see also [examples](https://github.com/sabamotto/jquery-egen/tree/master/examples).
